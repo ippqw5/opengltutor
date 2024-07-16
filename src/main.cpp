@@ -54,10 +54,13 @@ static std::vector<Face> faces = {
 static void render() {
     glBegin(GL_TRIANGLES);
 
-    for (auto const &face : faces) {
+    for (int i = 0; i < faces.size(); i++) {
+        Face& face = faces[i];
         Vertex a = vertices[face.a];
         Vertex b = vertices[face.b];
         Vertex c = vertices[face.c];
+        if (i % 2 == 0) glColor3f(1, 0, 0);
+		else glColor3f(0, 1, 0);
         glVertex3f(a.x, a.y, a.z);
         glVertex3f(b.x, b.y, b.z);
         glVertex3f(c.x, c.y, c.z);
